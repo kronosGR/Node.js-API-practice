@@ -6,3 +6,4 @@
 * File upload(multer)
 * Authentication (jsonwebtoken)
 * Password-hashing(bcryptjs)
+* Promises and Async/await
