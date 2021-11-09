@@ -5,25 +5,23 @@ const postSchema = new Schema(
   {
     title: {
       type: String,
-      required: true,
+      required: true
     },
     imageUrl: {
       type: String,
-      required: true,
+      required: true
     },
     content: {
       type: String,
-      required: true,
+      required: true
     },
     creator: {
       type: Schema.Types.ObjectId,
-      required: true,
-      ref: 'User'
-    },
+      ref: 'User',
+      required: true
+    }
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
 module.exports = mongoose.model('Post', postSchema);
