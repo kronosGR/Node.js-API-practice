@@ -7,3 +7,4 @@
 * Authentication (jsonwebtoken)
 * Password-hashing(bcryptjs)
 * Promises and Async/await
+* Websockets (socket.io)
