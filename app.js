@@ -46,6 +46,7 @@ app.use((req, res, next) => {
 app.use('/feed', feedRoutes);
 app.use('/auth', authRoutes);
 
+
 app.use((error, req, res, next) => {
   console.log(error);
   const status = error.statusCode || 500;
@@ -57,6 +58,10 @@ app.use((error, req, res, next) => {
 mongoose
   .connect('mongodb+srv://kronos:yxhI2XOMH63PzHrm@cluster0.hrnez.mongodb.net/messages')
   .then((result) => {
-    app.listen(8080);
+    const server = app.listen(8080);
+    const io = require('socket.io')(server);
+    io.on('connection', socket => {
+      console.log('Client connected')
+    })
   })
   .catch((err) => console.log(err));
