@@ -8,3 +8,4 @@
 * Password-hashing(bcryptjs)
 * Promises and Async/await
 * Websockets (socket.io)
+* Testing (mocha, chai)
