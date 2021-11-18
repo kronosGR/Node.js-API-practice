@@ -35,11 +35,28 @@ describe('Auth Controller - Login', function () {
           password: 'test',
           name: 'test',
           posts: [],
+          _id: 'sdggsfgsgfdsdfgsd',
         });
         return user.save();
       })
-      .then((result) => {
-        
+      .then(() => {
+        const req = { userId: 'sdggsfgsgfdsdfgsd' };
+        const res = {
+          statusCode: 500,
+          userStatus: null,
+          status: function (code) {
+            this.statusCode = code;
+            return this;
+          },
+          json: function (data) {
+            this.userStatus = data.status;
+          },
+        };
+        AuthController.getUserStatus(req, res, () => {}).then(() => {
+          expect(req.statusCode).to.be.equal(200);
+          expect(req.userStatus).to.be.equal('I am new');
+          done();
+        });
       })
       .catch((err) => console.log(err));
   });
